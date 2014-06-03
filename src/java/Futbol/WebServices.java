@@ -17,6 +17,7 @@ import Model.Galeria;
 import Model.Historia;
 import Model.Imagenes;
 import Model.Jugador;
+import Model.Minuto;
 import Model.Model;
 import Model.Noticia;
 import Model.Selecciones;
@@ -322,6 +323,29 @@ public class WebServices {
             while (rs.next()) {
                 cast.creaObjetos(new Favoritos(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
                 System.out.println(rs.getString(1) + "|" + rs.getString(2) + "|" + rs.getString(3) + "|" + rs.getString(4) + "|" + rs.getString(5) + "|" + rs.getString(6) + "|" + rs.getString(7));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        String JsonString = cast.convierteObjeto();
+        m.cerrarConexion();
+        return (JsonString);
+    }
+
+    @GET
+    @Produces("text/plain")
+    @Path("/minuto/{idioma}/{id}")
+    public String getMinuti(@PathParam("idioma") int idioma, @PathParam("id") String id) {
+        Model m = new Model(idioma, "Minutos");
+        m.setAuxOtros(id);
+        ObjectToJson cast = new ObjectToJson();
+        ResultSet rs = m.query();
+        try {
+            while (rs.next()) {
+                cast.creaObjetos(new Minuto(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                System.out.println(rs.getString(1) + " " + rs.getString(2) + "" + rs.getString(3) + " " + rs.getString(4));
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
