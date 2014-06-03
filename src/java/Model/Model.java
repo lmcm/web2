@@ -302,11 +302,11 @@ public class Model {
             case 13:
 
                 if (this.idioma == 1) {
-                    var = "select idMinuto, idHorario, minuto, descripcion from minutominuto where idioma=1 and  idHorario = (" + this.getAuxOtros() + ") order by idMinuto  DESC";
+                    var = "select idMinuto, idHorario, minuto, descripcion,  nombreEquipos, golLocales, golVisitantes  from minutominuto where idioma=1 and  idHorario = (" + this.getAuxOtros() + ") order by idMinuto  asc";
                     System.out.println("Imprimiendo 1");
                 } else {
                     System.out.println("Imprimiendo 2");
-                    var = "select idMinuto, idHorario, minuto, descripcion from minutominuto where idioma=2 and  idHorario = (" + this.getAuxOtros() + ") order by idMinuto  DESC ";
+                    var = "select idMinuto, idHorario, minuto, descripcion, nombreEquipos, golLocales, golVisitantes from minutominuto where idioma=2 and  idHorario = (" + this.getAuxOtros() + ") order by idMinuto  asc ";
                 }
                 break;
 

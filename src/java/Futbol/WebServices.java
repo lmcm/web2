@@ -343,7 +343,7 @@ public class WebServices {
         ResultSet rs = m.query();
         try {
             while (rs.next()) {
-                cast.creaObjetos(new Minuto(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                cast.creaObjetos(new Minuto(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
                 System.out.println(rs.getString(1) + " " + rs.getString(2) + "" + rs.getString(3) + " " + rs.getString(4));
 
             }
