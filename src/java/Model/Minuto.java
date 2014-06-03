@@ -11,16 +11,14 @@ package Model;
  */
 public class Minuto {
 
-    String idMinuto, idHorario, idioma, minuto, descripcion;
+    String idMinuto, idHorario, minuto, descripcion;
 
     public Minuto(String idM,
             String idH,
-            String idi,
             String min,
             String des) {
-        idMinuto = idH;
+        idMinuto = idM;
         idHorario = idH;
-        idioma = idi;
         minuto = min;
         descripcion = des;
 

@@ -9,8 +9,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +27,16 @@ public class Model {
     Boolean aux = false;
     int idioma;
     String peticion;
+
+   private String auxOtros = "";
+
+    public String getAuxOtros() {
+        return auxOtros;
+    }
+
+    public void setAuxOtros(String auxOtros) {
+        this.auxOtros = auxOtros;
+    }
 
     public Model(int idioma, String peticion) {
         this.idioma = idioma;
@@ -89,6 +97,10 @@ public class Model {
 
             case "Jugadores":
                 query = Consultas(11);
+                break;
+
+            case "Minutos":
+                query = Consultas(13);
                 break;
 
 //                 case "favoritos":
@@ -279,11 +291,22 @@ public class Model {
             case 12:
 
                 if (this.idioma == 1) {
-                     var = "select idFavorito, idEquipo, titulo, img1, img2, descripcion, fecha  from Favoritos  where idioma=1 and  idEquipo in (" + this.peticion + ") order by idequipo";
+                    var = "select idFavorito, idEquipo, titulo, img1, img2, descripcion, fecha  from Favoritos  where idioma=1 and  idEquipo in (" + this.peticion + ") order by idequipo";
                     System.out.println("Imprimiendo 1");
                 } else {
                     System.out.println("Imprimiendo 2");
                     var = "select idFavorito, idEquipo, titulo, img1, img2, descripcion, fecha  from Favoritos  where idioma=2 and  idEquipo in (" + this.peticion + ") order by idequipo ";
+                }
+                break;
+
+            case 13:
+
+                if (this.idioma == 1) {
+         var = "select idMinuto, idHorario, minuto, descripcion from minutominuto where idioma=1 and  idHorario = (" +this.getAuxOtros() + ") order by idMinuto  DESC";
+                    System.out.println("Imprimiendo 1");
+                } else {
+                    System.out.println("Imprimiendo 2");
+                    var = "select idMinuto, idHorario, minuto, descripcion from minutominuto where idioma=2 and  idHorario = (" +this.getAuxOtros() + ") ";
                 }
                 break;
 
